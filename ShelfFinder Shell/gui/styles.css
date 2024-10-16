@@ -1,0 +1,255 @@
+/* Update this section to customize the appearance of ShelfFinder */
+:root {
+    /* Colors */
+    --primary-bg-color: #ffffff; /* Map (left) BG */
+    --secondary-bg-color: #f0f0f0; /* Detail (right) BG */
+    --accent-color: #990000; /* Brand Color 1 (used for buttons) */
+    --hover-bg-color: #828282; /* Brand Color 2 (or leave grey) */
+    --text-color: #ffffff; /* Text Color for buttons */
+    
+    /* Font Variables */
+    --primary-font: "Effra", "Montserrat", Times, sans-serif;
+    --secondary-font: "Effra", "Montserrat", Century, sans-serif;
+    
+    /* Font Size Variables */
+    --font-size-small: 16px;
+    --font-size-large: 32px;
+    --font-size-button: 20px;
+}
+
+/* Defines the body text */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+/* P1 Class Font and Size */
+.p1 {
+    font-family: var(--primary-font);
+    font-size: var(--font-size-small);
+}
+
+/* P2 Class Font and Size */
+.p2 {
+    font-family: var(--primary-font);
+    font-size: var(--font-size-large);
+    font-weight: bold;   
+}
+
+/* Left Page Size and Background Color */
+.left-page {
+    width: 100vw;
+    height: 100vh;
+    flex: 1;
+    background-color: var(--primary-bg-color);
+}
+
+/* Right Page when displayed */
+.right-page.shown {
+    position: fixed;
+    height: 100%;
+    top: 0;
+    right: 0;
+    min-width: 300px;
+    width: 25vw;
+    max-width: 350px;
+    box-sizing: border-box;
+    text-wrap: wrap;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: var(--secondary-bg-color);
+    transform: translateX(0%);
+    transition: transform 0.25s ease-out;
+}
+
+/* Style for the Book Cover and Call Number section of Right Page */
+.bookContainer {
+    display: flex;
+    align-items: center;
+}
+
+.BookCover {
+    margin-right: 15px;
+    background-color: var(--secondary-bg-color);
+    object-fit: cover;
+}
+
+/* Allows for JS to hide the image */
+.bookCover.hidden {
+    display: none;
+}
+
+/* Specific styling for the book cover image */
+.bookCoverImage {
+    max-width: 150px;
+    max-height: 150px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Specific styling for the book cover image info */
+.bookInfo {
+    font-family: var(--primary-font);
+    font-size: var(--font-size-small);
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Used when a book cover image isn't found */
+.align-left {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Right Page when hidden */
+.right-page.hidden {
+    position: fixed;
+    height: 100%;
+    min-width: 300px;
+    width: 25vw;
+    max-width: 350px;
+    top: 0;
+    right: 0;
+    box-sizing: border-box;
+    text-wrap: wrap;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: var(--secondary-bg-color);
+    transform: translateX(100%);
+    transition: transform 0.25s ease-out;
+}
+
+/* Style for the Vertical Bar on Mobile */
+.verticalBar {
+    position: fixed;
+    z-index: 2;
+    width: 10px;
+    padding: 10px;
+    height: 100%;
+    background-color: var(--accent-color);
+    right: 0;
+    top: 0;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.3s;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Text within the Vertical Bar on Mobile */
+.verticalText span {
+    display: flex;
+    font-family: var(--primary-font);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    color: var(--text-color);
+    font-size: var(--font-size-button);
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+/* Locator / Shelf Image Characteristics */
+#locatorimg, #shelfimg {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Map Image Characteristics */
+#mapimg {
+    max-width: 97%;
+    max-height: 97%;
+    display: block;
+    margin: 0 auto;
+    cursor: grab;
+    transition: transform 0s ease;
+}
+
+/* Button to Toggle the Right Page */
+.toggleButton {
+    position: fixed;
+    z-index: 2;
+    font-family: var(--secondary-font);
+    font-size: var(--font-size-small);
+    padding: 10px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    right: 10px;
+    top: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.3s;
+}
+
+/* Toggle Buttons Hover Color */
+.toggleButton:hover, .guideButton:hover, .close-button:hover {
+    background-color: var(--hover-bg-color);
+}
+
+/* Call Number Guide and Directions Styling */
+#iframeContainer1, #iframeContainer2 {
+    display: none; 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; 
+    background-color: var(--secondary-bg-color); 
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); 
+    max-height: 80vh;
+    min-height: 50vh;
+    max-width: 80vw; 
+    min-width: 50vw;
+    overflow-y: auto; 
+    overflow-x: auto;
+    padding: 20px;
+    margin: 10px; /* Ensure some margins for spacing */
+    text-align: center; /* Center content within the pop-up */
+}
+
+/* iframe Close Window button styling */
+.close-button, .guideButton {
+    font-family: var(--secondary-font);
+    font-size: var(--font-size-small);
+    padding: 10px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.3s;
+}
+
+/* Additional Styling for the "X" */
+.close-button {
+    position: fixed;
+    z-index: 1000;
+    right: 10px;
+    top: 10px;
+}
+
+/* Styling for Mobile Windows, shows the vertical bar and hides the Toggle */
+@media only screen and (max-width: 800px) {
+    .toggleButton {
+        display: none !important;
+    }
+    
+    .verticalBar {
+        display: flex; /* Show vertical bar */
+    }
+
+    .verticalText {
+        display: block; /* Show vertical text */
+    }
+    .verticalBar.active {
+        transform: translateX(-1000%);
+    }
+}
