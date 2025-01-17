@@ -22,11 +22,8 @@ Any questions about this code can be sent to ill@stonybrook.edu
 
 BEFORE ANY OF THIS:
     1- Weed and shift your collection. Trust us.
-    
     2- Prepare your maps and other associated images you want to use (whether you download them or create them).
-    
     3- Prepare your shelving unit data in a spreadsheet. Email us at ill@stonybrook.edu if you need our template.
-    
     4- Update your shelf labeling in your library locations.
 
 HOW TO GET STARTED (a quick read-through of the code will also be helpful):
